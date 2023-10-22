@@ -1,26 +1,34 @@
-import { Transaction } from "src/transaction/entities/transaction.entity";
-import { User } from "src/user/entities/user.entity";
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Transaction } from 'src/transaction/entities/transaction.entity';
+import { User } from 'src/user/entities/user.entity';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class Category {
-    @PrimaryGeneratedColumn({name: 'category_id'})
-    id: number
+  @PrimaryGeneratedColumn({ name: 'category_id' })
+  id: number;
 
-    @Column()
-    title: string
-    
-    @ManyToOne(() => User, (user) => user.categories)
-    @JoinColumn({ name: 'user_id'})
-    user: User
+  @Column()
+  title: string;
 
-    @OneToMany(() => Transaction, (transaction) => transaction.category)
-    transactions: Transaction[]
+  @ManyToOne(() => User, (user) => user.categories)
+  @JoinColumn({ name: 'user_id' })
+  user: User;
 
-    @CreateDateColumn()
-    createdAt: Date
+  @OneToMany(() => Transaction, (transaction) => transaction.category)
+  transactions: Transaction[];
 
-    
-    @UpdateDateColumn()
-    updatedAt: Date
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

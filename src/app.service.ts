@@ -7,6 +7,6 @@ export class AppService {
   }
 
   sayHi(): string {
-    return 'Hi'
+    return 'Hi';
   }
 }

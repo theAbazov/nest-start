@@ -1,23 +1,30 @@
-import { Category } from "src/category/entities/category.entity";
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Category } from 'src/category/entities/category.entity';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class User {
-    @PrimaryGeneratedColumn({name: 'user_id'})
-    id: number
+  @PrimaryGeneratedColumn({ name: 'user_id' })
+  id: number;
 
-    @Column()
-    email: string
+  @Column()
+  email: string;
 
-    @Column()
-    password: string
+  @Column()
+  password: string;
 
-    @OneToMany(() => Category, (category) => category.user )
-    categories: Category[]
+  @OneToMany(() => Category, (category) => category.user)
+  categories: Category[];
 
-    @CreateDateColumn()
-    createdAt: Date
+  @CreateDateColumn()
+  createdAt: Date;
 
-    @UpdateDateColumn()
-    updatedAt: Date
+  @UpdateDateColumn()
+  updatedAt: Date;
 }
