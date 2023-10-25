@@ -13,7 +13,7 @@ import {
 
 @Entity()
 export class Category {
-  @PrimaryGeneratedColumn({ name: 'category_id' })
+  @PrimaryGeneratedColumn({ name: 'category_id'})
   id: number;
 
   @Column()
@@ -26,9 +26,9 @@ export class Category {
   @OneToMany(() => Transaction, (transaction) => transaction.category)
   transactions: Transaction[];
 
-  @CreateDateColumn()
+  @CreateDateColumn({name: 'created_at'})
   createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({name: 'updated_at'})
   updatedAt: Date;
 }
