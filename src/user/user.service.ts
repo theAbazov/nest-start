@@ -29,7 +29,7 @@ export class UserService {
       password,
     });
     const { token } = await this.authService.login({ id: user.id.toString(), email: user.email })
-    return {...user, token};
+    return { ...user, token };
   }
 
   async findAll() {
@@ -44,7 +44,7 @@ export class UserService {
     return `This action updates a #${id} user`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: number) {
+    return this.userRepository.delete(id);
   }
 }
